@@ -155,5 +155,53 @@ PageHelper 的拦截器会拦截 SQL，自动在原始 SQL 外层加上 LIMIT / 
         return new PageResult(total,record);
     }
 
+    /**
+     * 启用禁用员工账号
+     * @param status
+     * @param id
+     */
+    @Override
+    public void startOrStop(Integer status, Long id) {
+        //update employee set status =？ where id = ？
+        Employee employee = new Employee();
+        employee.setStatus(status);
+        employee.setId(id);
+
+        employeeMapper.update(employee);
+
+    }
+
+    /**
+     * 根据id查询员工
+     * @param id
+     * @return
+     */
+    @Override
+    public Employee getById(Long id) {
+        Employee employee=employeeMapper.getById(id);
+        employee.setPassword("****");
+        return employee;
+    }
+
+
+    /**
+     * 编辑员工信息
+     * @param employeeDTO
+     */
+    @Override
+    public void uodate(EmployeeDTO employeeDTO) {
+        Employee employee = new Employee();
+        //spring框架提供的BeanUtils.copyProperties方法
+        //它的作用就说把一个对象中的属性值拷贝到另一个对象中
+        BeanUtils.copyProperties(employeeDTO,employee);
+
+        employee.setUpdateTime(LocalDateTime.now());
+        employee.setUpdateUser(BaseContext.getCurrentId());
+
+        employeeMapper.update(employee);
+
+
+    }
+
 
 }
