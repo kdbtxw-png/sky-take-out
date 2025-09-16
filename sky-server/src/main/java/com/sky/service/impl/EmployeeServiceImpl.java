@@ -99,13 +99,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
 
-        //设置当前记录的创建时间和修改时间
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
-        //设置当前记录创建人id和修改人id
-        //TODO 后期需要改为当前登录用户的id
-        employee.setCreateUser(BaseContext.getCurrentId());
-        employee.setUpdateUser(BaseContext.getCurrentId()) ;
+//        //设置当前记录的创建时间和修改时间
+//        employee.setCreateTime(LocalDateTime.now());
+//        employee.setUpdateTime(LocalDateTime.now());
+//        //设置当前记录创建人id和修改人id
+//        //TODO 后期需要改为当前登录用户的id
+//        employee.setCreateUser(BaseContext.getCurrentId());
+//        employee.setUpdateUser(BaseContext.getCurrentId()) ;
 
 
         employeeMapper.insert(employee);
@@ -194,9 +194,9 @@ PageHelper 的拦截器会拦截 SQL，自动在原始 SQL 外层加上 LIMIT / 
         //spring框架提供的BeanUtils.copyProperties方法
         //它的作用就说把一个对象中的属性值拷贝到另一个对象中
         BeanUtils.copyProperties(employeeDTO,employee);
-
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+//
+//        employee.setUpdateTime(LocalDateTime.now());
+//        employee.setUpdateUser(BaseContext.getCurrentId());
 
         employeeMapper.update(employee);
 

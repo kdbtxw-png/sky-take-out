@@ -44,8 +44,8 @@ public class CategoryServiceImpl implements CategoryService {
         //它的作用就说把一个对象的属性值拷贝到另一个对象中
         BeanUtils.copyProperties(categoryDTO,category);
 
-        category.setUpdateTime(LocalDateTime.now());
-        category.setUpdateUser(BaseContext.getCurrentId());
+//        category.setUpdateTime(LocalDateTime.now());
+//        category.setUpdateUser(BaseContext.getCurrentId());
 
         categoryMapper.update(category);
     }
@@ -94,12 +94,12 @@ public class CategoryServiceImpl implements CategoryService {
         BeanUtils.copyProperties(categoryDTO,category);
         //设置账号状态，默认为正常状态
         category.setStatus(StatusConstant.ENABLE);
-        //设置当前记录的创建时间喝修改时间
-        category.setCreateTime(LocalDateTime.now());
-        category.setUpdateTime(LocalDateTime.now());
-        //设置当前记录创建人id和修改人id
-        category.setCreateUser(BaseContext.getCurrentId());
-        category.setUpdateUser(BaseContext.getCurrentId());
+//        //设置当前记录的创建时间喝修改时间
+//        category.setCreateTime(LocalDateTime.now());
+//        category.setUpdateTime(LocalDateTime.now());
+//        //设置当前记录创建人id和修改人id
+//        category.setCreateUser(BaseContext.getCurrentId());
+//        category.setUpdateUser(BaseContext.getCurrentId());
 
         categoryMapper.insert(category);
 
